@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planara.Benchmarks", "src/Planara.Benchmarks.csproj", "{433936C6-8C59-476B-8C2C-2186829CBA02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planara.Benchmarks.Tests", "tests/Planara.Benchmarks.Tests.csproj", "{1B6AA9DA-C3D4-4ECB-8D14-ED88340FB49E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{433936C6-8C59-476B-8C2C-2186829CBA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433936C6-8C59-476B-8C2C-2186829CBA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433936C6-8C59-476B-8C2C-2186829CBA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433936C6-8C59-476B-8C2C-2186829CBA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6AA9DA-C3D4-4ECB-8D14-ED88340FB49E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6AA9DA-C3D4-4ECB-8D14-ED88340FB49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6AA9DA-C3D4-4ECB-8D14-ED88340FB49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6AA9DA-C3D4-4ECB-8D14-ED88340FB49E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
