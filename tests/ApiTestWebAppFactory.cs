@@ -6,7 +6,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 using Planara.Benchmarks.Data;
+using Planara.Benchmarks.Tests.Fakes;
+using Planara.Benchmarks.Workers;
+using Planara.Common.Kafka;
+using Planara.Kafka.Interfaces;
 using StackExchange.Redis;
 using Testcontainers.PostgreSql;
 using Testcontainers.Redis;
@@ -35,6 +40,16 @@ public class ApiTestWebAppFactory: WebApplicationFactory<Program>, IAsyncLifetim
 
             services.AddDbContext<DataContext>(opt =>
                 opt.UseNpgsql(_postgres.GetConnectionString()));
+            
+            services.RemoveAll<IKafkaConsumer<UserDeletedMessage>>();
+            services.RemoveAll<IHostedService>();
+
+            services.AddSingleton<FakeKafkaConsumer<UserDeletedMessage>>();
+
+            services.AddSingleton<IKafkaConsumer<UserDeletedMessage>>(sp =>
+                sp.GetRequiredService<FakeKafkaConsumer<UserDeletedMessage>>());
+
+            services.AddScoped<UserDeletedKafkaConsumerWorker>();
             
             services
                 .AddAuthentication(options =>
