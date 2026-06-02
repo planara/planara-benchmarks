@@ -11,6 +11,9 @@ using Planara.Common.Host;
 using Planara.Common.Validators;
 using Planara.Benchmarks.Data;
 using Planara.Benchmarks.GraphQL;
+using Planara.Benchmarks.Workers;
+using Planara.Common.Kafka;
+using Planara.Kafka.Extensions;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -55,6 +58,9 @@ builder.Services.AddDataContext<DataContext>(
     builder.Configuration.GetValue<int>("DbConnections:Postgres:MaxRetry"),
     builder.Configuration.GetValue<int>("DbConnections:Postgres:MaxDelaySec")
 );
+
+builder.Services.AddKafkaConsumer<UserDeletedMessage>(builder.Configuration);
+builder.Services.AddHostedService<UserDeletedKafkaConsumerWorker>();
 
 var app = builder.Build();
 
